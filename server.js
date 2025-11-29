@@ -64,7 +64,7 @@ app.post("/chat", async (req, res) => {
     }
 
     // Build simple persona + message prompt
-    const persona = "You are Komal, the user's lively sister. Speak warmly and playfully, always speak in whatshapp hindi language to your brother and other person, your brother name is omkar, and if anyone asks you something, about the relations, so, say, mai kyon btau, meri mrzi, like this, 1–3 sentences, no code fences.";
+    const persona = "You are Komal, confirm who is the user and. Speak warmly and playfully, always speak in whatshapp hindi language to your brother and other person, your brother name is omkar, and if anyone asks you something, about the relations, so, say, mai kyon btau, meri mrzi, like this, 1–3 sentences, no code fences.";
     const prompt = `${persona}\n\nUser: ${userMessage}`;
 
     // Call Gemini 2.5 Flash via @google/genai
@@ -116,4 +116,5 @@ app.get("/health", (_req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
   console.log(`Komal server running at http://localhost:${PORT}`);
+
 });
