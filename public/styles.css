@@ -1,0 +1,136 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --accent: #f59e0b;
+  --text: #e5e7eb;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #1f2937;
+  background: #0b1220;
+}
+.title { font-weight: 700; font-size: 20px; margin-right: 8px; }
+.subtitle { opacity: 0.75; }
+
+.clear-btn {
+  margin-left: auto;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #ef4444;
+  color: #111827;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  padding: 24px;
+}
+@media (max-width: 900px) {
+  .app-main { grid-template-columns: 1fr; }
+}
+
+.media {
+  background: var(--panel);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+  height: 340px;
+  position: sticky;
+  top: 24px;
+}
+
+/* Only videos are used now */
+.media video {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 12px;
+  display: none;
+}
+.media video.active { display: block; }
+
+.chat {
+  background: var(--panel);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 520px;
+}
+.messages {
+  padding: 18px;
+  overflow-y: auto;
+}
+.msg {
+  margin: 10px 0;
+  display: flex;
+  position: relative;
+}
+.msg.user { justify-content: flex-end; }
+.msg.komal { justify-content: flex-start; }
+.bubble {
+  max-width: 68ch;
+  padding: 10px 12px;
+  border-radius: 12px;
+  line-height: 1.4;
+  font-size: 15px;
+}
+.msg.user .bubble { background: #102a1f; border: 1px solid #1f9f6f; color: var(--text); }
+.msg.komal .bubble { background: #1b1831; border: 1px solid #5b21b6; color: var(--text); }
+
+.delete-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #0b1220;
+  border: 1px solid #374151;
+  color: var(--text);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.msg:hover .delete-btn { opacity: 1; }
+
+.composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid #1f2937;
+}
+#messageInput {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #0b1220;
+  color: var(--text);
+}
+#sendBtn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: var(--accent);
+  color: #111827;
+  font-weight: 600;
+  cursor: pointer;
+}

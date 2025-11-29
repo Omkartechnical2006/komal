@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Komal Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="avatar-title">
+      <span class="title">Komal</span>
+      <span class="subtitle">Your lively sister</span>
+    </div>
+    <button id="clearBtn" class="clear-btn" title="Clear chat">Clear Chat</button>
+  </header>
+
+  <main class="app-main">
+    <section id="media" class="media">
+      <video id="firstVideo" src="/assets/first.mp4" preload="auto" playsinline muted></video>
+      <video id="idleVideo" src="/assets/second.mp4" preload="auto" playsinline muted loop></video>
+      <video id="talkVideo" src="/assets/komal-talking.mp4" preload="auto" playsinline muted loop></video>
+    </section>
+
+    <section class="chat">
+      <div id="messages" class="messages">
+        <% if (Array.isArray(history)) { %>
+          <% history.forEach(function(msg){ %>
+            <div class="msg <%= msg.role %>" data-id="<%= msg._id %>">
+              <div class="bubble"><%= msg.text %></div>
+              <button class="delete-btn" title="Delete">🗑️</button>
+            </div>
+          <% }) %>
+        <% } %>
+      </div>
+
+      <form id="chatForm" class="composer">
+        <input id="messageInput" name="message" type="text" placeholder="Talk to Komal..." autocomplete="off" />
+        <button type="submit" id="sendBtn">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/client.js"></script>
+</body>
+</html>
